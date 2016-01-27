@@ -261,7 +261,6 @@
     <Folder Include="src\ASF\mega\utils\assembler\" />
     <Folder Include="src\ASF\mega\utils\preprocessor\" />
     <Folder Include="src\config\" />
-    <Folder Include="vsix\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\ASF\mega\drivers\cpu\mega_reset_cause.h">
@@ -381,12 +380,6 @@
     <Compile Include="src\main.c">
       <SubType>compile</SubType>
     </Compile>
-    <None Include="vsix\extension.xdkmanifest">
-      <SubType>Code</SubType>
-    </None>
-    <None Include="vsix\License.txt">
-      <SubType>compile</SubType>
-    </None>
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>

@@ -135,7 +135,7 @@ Discarded input sections
  .debug_macro   0x00000000      0x10c src/ASF/common/services/clock/mega/sysclk.o
  .debug_macro   0x00000000       0x7f src/ASF/common/services/clock/mega/sysclk.o
  .debug_line    0x00000000      0x592 src/ASF/common/services/clock/mega/sysclk.o
- .debug_str     0x00000000    0x101a9 src/ASF/common/services/clock/mega/sysclk.o
+ .debug_str     0x00000000    0x101a1 src/ASF/common/services/clock/mega/sysclk.o
  .comment       0x00000000       0x31 src/ASF/common/services/clock/mega/sysclk.o
  .debug_frame   0x00000000       0x44 src/ASF/common/services/clock/mega/sysclk.o
  .group         0x00000000        0x8 src/timer.o
@@ -1052,16 +1052,16 @@ END GROUP
  .debug_frame   0x000000c0       0x64 src/interrupt.o
  .debug_frame   0x00000124      0x284 src/main.o
 
-.debug_str      0x00000000    0x10cbe
+.debug_str      0x00000000    0x10cb6
  *(.debug_str)
- .debug_str     0x00000000    0x10534 src/timer.o
-                              0x1070c (size before relaxing)
- .debug_str     0x00010534      0x15f src/ASF/common/boards/user_board/init.o
-                              0x10602 (size before relaxing)
- .debug_str     0x00010693       0x44 src/interrupt.o
-                              0x10546 (size before relaxing)
- .debug_str     0x000106d7      0x5e7 src/main.o
-                              0x10e6c (size before relaxing)
+ .debug_str     0x00000000    0x1052c src/timer.o
+                              0x10704 (size before relaxing)
+ .debug_str     0x0001052c      0x15f src/ASF/common/boards/user_board/init.o
+                              0x105fa (size before relaxing)
+ .debug_str     0x0001068b       0x44 src/interrupt.o
+                              0x1053e (size before relaxing)
+ .debug_str     0x000106cf      0x5e7 src/main.o
+                              0x10e64 (size before relaxing)
 
 .debug_loc      0x00000000      0xb78
  *(.debug_loc)

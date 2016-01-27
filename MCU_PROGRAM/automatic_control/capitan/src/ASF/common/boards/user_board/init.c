@@ -28,7 +28,7 @@ void board_init(void)
 		ioport_configure_pin(DI_TIMER_ENABLE_4,	IOPORT_DIR_INPUT |  IOPORT_PULL_DOWN);
 		
 		/* Discrete outputs initialization */
-		ioport_configure_pin(DO_RC_START,		IOPORT_DIR_INPUT |  IOPORT_PULL_UP);
+		ioport_configure_pin(DO_EXT_START,		IOPORT_DIR_INPUT |  IOPORT_PULL_UP);
 		ioport_configure_pin(DO_END,			IOPORT_DIR_OUTPUT |  IOPORT_INIT_HIGH);
 		ioport_configure_pin(DO_CONTROL_1,		IOPORT_DIR_OUTPUT |  IOPORT_INIT_HIGH);
 		ioport_configure_pin(DO_CONTROL_2,		IOPORT_DIR_OUTPUT |  IOPORT_INIT_HIGH);

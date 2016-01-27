@@ -9,149 +9,14 @@ extern uint8_t CurrentTimer;
 extern uint32_t Timer_Delays;
 extern uint16_t Timer_Int_Counter;
 
-/**
- * \def BUFFER_SIZE
- * \brief The size of the UART buffer
- */
-#define BUFFER_SIZE 20
-
-// set the correct BAUD and F_CPU defines before including setbaud.h
-#include "conf_clock.h"
-#include "conf_uart.h"
-
-/**
- * \name avr_libc_inc avr libc include files
- * @{
- */
-#include <util/setbaud.h>
-#include <avr/interrupt.h>
-
-#include "ring_buffer.h"
-
 volatile uint8_t STATUS_FLAG = 0;
 volatile uint8_t RC_STATUS = 0;
 volatile uint8_t FLAG = 0;
 
-
 #define ADC_INPUT      ADC_MUX_ADC0
 #define ADC_VREF       ADC_VREF_AVCC
 
-// buffers for use with the ring buffer (belong to the UART)
-uint8_t out_buffer[BUFFER_SIZE];
-uint8_t in_buffer[BUFFER_SIZE];
 
-// the string we send and receive on UART
-const char test_string[] = "Hello, world!";
-
-//! ring buffer to use for the UART transmission
-struct ring_buffer ring_buffer_out;
-//! ring buffer to use for the UART reception
-struct ring_buffer ring_buffer_in;
-
-/**
- * \brief UART data register empty interrupt handler
- *
- * This handler is called each time the UART data register is available for
- * sending data.
- */
-ISR(UART0_DATA_EMPTY_IRQ)
-{
-	// if there is data in the ring buffer, fetch it and send it
-	if (!ring_buffer_is_empty(&ring_buffer_out)) {
-		UDR0 = ring_buffer_get(&ring_buffer_out);
-	}
-	else {
-		// no more data to send, turn off data ready interrupt
-		UCSR0B &= ~(1 << UDRIE0);
-	}
-}
-
-/**
- * \brief Data RX interrupt handler
- *
- * This is the handler for UART receive data
- */
-ISR(UART0_RX_IRQ)
-{
-	ring_buffer_put(&ring_buffer_in, UDR0);
-}
-
-/**
- * \brief Initialize the UART with correct baud rate settings
- *
- * This function will initialize the UART baud rate registers with the correct
- * values using the AVR libc setbaud utility. In addition set the UART to
- * 8-bit, 1 stop and no parity.
- */
-static void uart_init(void)
-{
-#if defined UBRR0H
-	// get the values from the setbaud tool
-	UBRR0H = UBRRH_VALUE;
-	UBRR0L = UBRRL_VALUE;
-#else
-#error "Device is not supported by the driver"
-#endif
-
-#if USE_2X
-	UCSR0A |= (1 << U2X0);
-#endif
-
-	// enable RX and TX and set interrupts on rx complete
-	UCSR0B = (1 << RXEN0) | (1 << TXEN0) | (1 << RXCIE0);
-
-	// 8-bit, 1 stop bit, no parity, asynchronous UART
-	UCSR0C = (1 << UCSZ01) | (1 << UCSZ00) | (0 << USBS0) |
-			(0 << UPM01) | (0 << UPM00) | (0 << UMSEL01) |
-			(0 << UMSEL00);
-
-	// initialize the in and out buffer for the UART
-	ring_buffer_out = ring_buffer_init(out_buffer, BUFFER_SIZE);
-	ring_buffer_in = ring_buffer_init(in_buffer, BUFFER_SIZE);
-}
-
-/**
- * \brief Function for putting a char in the UART buffer
- *
- * \param data the data to add to the UART buffer and send
- *
- */
-static inline void uart_putchar(uint8_t data)
-{
-	// Disable interrupts to get exclusive access to ring_buffer_out.
-	cli();
-	if (ring_buffer_is_empty(&ring_buffer_out)) {
-		// First data in buffer, enable data ready interrupt
-		UCSR0B |=  (1 << UDRIE0);
-	}
-	// Put data in buffer
-	ring_buffer_put(&ring_buffer_out, data);
-
-	// Re-enable interrupts
-	sei();
-}
-
-/**
- * \brief Function for getting a char from the UART receive buffer
- *
- * \retval Next data byte in receive buffer
- */
-static inline uint8_t uart_getchar(void)
-{
-	return ring_buffer_get(&ring_buffer_in);
-}
-
-
-/**
- * \brief Function to check if we have a char waiting in the UART receive buffer
- *
- * \retval true if data is waiting
- * \retval false if no data is waiting
- */
-static inline bool uart_char_waiting(void)
-{
-	return !ring_buffer_is_empty(&ring_buffer_in);
-}
 
 void interrupt_init(void);
 void timer_init(void);
@@ -257,7 +122,7 @@ void get_enabled_timers(void){
 }
 #define FIX_MODE	1
 #define GALET_MODE	2
-#define RC_MODE		3
+#define EXT_MODE	3
 
 void get_selector_modes(void);
 void get_selector_modes(void){
@@ -274,12 +139,12 @@ void get_selector_modes(void){
 	{
 		if(SELECTOR_MODE[i] > 766){SELECTOR_MODE[i] = FIX_MODE;}
 		else{
-			if(SELECTOR_MODE[i] < 256){SELECTOR_MODE[i] = RC_MODE;}
+			if(SELECTOR_MODE[i] < 256){SELECTOR_MODE[i] = EXT_MODE;}
 			else{SELECTOR_MODE[i] = GALET_MODE;}
 		}
 	}
 	//! debug
-	//if(SELECTOR_MODE[0] == GALET_MODE && SELECTOR_MODE[1] == FIX_MODE && SELECTOR_MODE[2] == RC_MODE){debug_led_3_on();}
+	//if(SELECTOR_MODE[0] == GALET_MODE && SELECTOR_MODE[1] == FIX_MODE && SELECTOR_MODE[2] == EXT_MODE){debug_led_3_on();}
 
 }
 void get_selector_values(void);
@@ -381,13 +246,13 @@ void start_timer(void){
 				// delay(delay)	// Hold the specified delay
 				break;
 				
-				case RC_MODE:			// If mode of timer is given from external RC-network
+				case EXT_MODE:			// If mode of timer is given from external RC-network
 				RC_NETWORK_VOLTAGE = 0;
-				gpio_set_pin_high(DO_RC_START);
+				gpio_set_pin_high(DO_EXT_START);
 				while(RC_NETWORK_VOLTAGE < 511){	// while value from ADC do not exceed the threshold
 					RC_NETWORK_VOLTAGE = get_rc_voltage(i);// read the voltage from RC-network in loop
 				}
-				gpio_set_pin_low(DO_RC_START);
+				gpio_set_pin_low(DO_EXT_START);
 				break;
 			}
 		}
@@ -410,19 +275,19 @@ int main(void){
 
 	// Insert application code here, after the board has been initialized.
 	sei();
-	cpu_delay_ms(500, F_CPU);	// задержка при включении для защиты от помех и ложных срабатываний
-	FLAG = 0;					// Сброс ложных флагов
-	STATUS_FLAG = READY;		// Переход в состояние готов
+	cpu_delay_ms(500, F_CPU);	// Service delay to avoid fails because of power-on noise
+	FLAG = 0;					// Clear the status flag
+	STATUS_FLAG = READY;		// Go to READY state
 	while(1){
 		switch(STATUS_FLAG){
 
 			case READY:
 			if(FLAG == START){
 				FLAG = 0;
-				gpio_set_pin_low(DO_END);				// Сброс вывода КОНЕЦ										
-				cpu_delay_ms(20, F_CPU);				// задержка необходима, чтобы пройти через фильтры			
+				gpio_set_pin_low(DO_END);				// Reset DO_END output
+				cpu_delay_ms(20, F_CPU);				// This delay is required to pass LF-filter
 																	
-				if(ioport_get_pin_level(DI_BYPASS)==1){	// Если на входе байпас единица								
+				if(ioport_get_pin_level(DI_BYPASS)==1){	// If DI_BYPASS input is set to 1
 					get_enabled_timers();
 /*
 					TIMER_ENABLE_STATUS[0] = 1;
@@ -434,7 +299,7 @@ int main(void){
 /*
 					SELECTOR_MODE[0] = FIX_MODE;
 					SELECTOR_MODE[1] = GALET_MODE;
-					SELECTOR_MODE[2] = RC_MODE;
+					SELECTOR_MODE[2] = EXT_MODE;
 */				
 					get_selector_values();
 /*
@@ -454,22 +319,22 @@ int main(void){
 			break;
 						
 			case TIMER_SETUP:
-			if(TIMER_ENABLE_STATUS[CurrentTimer]){			// Если текущий таймер разрешен
-				do_control_clear(CurrentTimer);				// Сброс вывода таймера
-				if(SELECTOR_MODE[CurrentTimer] == RC_MODE){	// Если времязадающей является внешняя RC-цепь
-					ioport_configure_pin(DO_RC_START,		IOPORT_DIR_OUTPUT |  IOPORT_INIT_LOW); // Переводим вывод RC_START в режим выхода со значением 0
-					//gpio_set_pin_low(DO_RC_START);			// Включаем внешний таймер
-					cpu_delay_ms(100, F_CPU);				// Низким импульсом 100 мс
-					ioport_configure_pin(DO_RC_START,		IOPORT_DIR_INPUT |  IOPORT_PULL_UP);// Переводим вывод RC_START в режим входа со значением 1
-					//gpio_set_pin_high(DO_RC_START);			
+			if(TIMER_ENABLE_STATUS[CurrentTimer]){				// If current timer is enabled
+				do_control_clear(CurrentTimer);					// Set output of timer OFF(low)
+				if(SELECTOR_MODE[CurrentTimer] == EXT_MODE){	// If external counter is used for this timer
+					ioport_configure_pin(DO_EXT_START, IOPORT_DIR_OUTPUT |  IOPORT_INIT_LOW); // Change mode of EXT_START pin to output and set it's value to 0
+					//gpio_set_pin_low(DO_EXT_START);			// Включаем внешний таймер
+					cpu_delay_ms(100, F_CPU);				// Make 100 ms pulse duration 
+					ioport_configure_pin(DO_EXT_START,		IOPORT_DIR_INPUT |  IOPORT_PULL_UP);// Change mode of EXT_START pin to input and set it's value to 1
+					//gpio_set_pin_high(DO_EXT_START);			
 					RC_STATUS = ON;					
 				}
-				else{										// Если время таймера фиксировано или определяется галетным переключателем
-					timer_start(DELAY[CurrentTimer]);		// Запускаем таймер
+				else{										// If current timer mode is FIX or GALET
+					timer_start(DELAY[CurrentTimer]);		// Start counting
 				}
 				STATUS_FLAG = TIMER_WORK;
 			}
-			else{											// Если текущий таймер не разрешен
+			else{											// If current timer is disabled
 				if(CurrentTimer++ > 3){
 					STATUS_FLAG = END;
 				}
@@ -480,7 +345,7 @@ int main(void){
 			case TIMER_WORK:
 			if(FLAG == FINISH){
 				FLAG = 0;
-				do_control_set(CurrentTimer);				// Установка вывода таймера
+				do_control_set(CurrentTimer);				// Set output of timer ON(high).
 				if(CurrentTimer++ < 4){
 					STATUS_FLAG = TIMER_SETUP;
 				}
@@ -489,10 +354,10 @@ int main(void){
 				}
 			}
 			else{
-				if(SELECTOR_MODE[CurrentTimer] == RC_MODE){
+				if(SELECTOR_MODE[CurrentTimer] == EXT_MODE){
 					
-					if(ioport_get_pin_level(DI_RC_READY) == 0){	// Если пришел сигнал с внешнего таймера
-						FLAG = FINISH;							// Устанавливаем флаг FINISH
+					if(ioport_get_pin_level(DI_RC_READY) == 0){	// If signal from external timer was received,
+						FLAG = FINISH;							// turn FLAG into FINISH state
 						RC_STATUS = OFF;
 					}
 				}
@@ -500,15 +365,15 @@ int main(void){
 			break;
 			
 			case END:
-			gpio_set_pin_high(DO_END);		// Установка вывода КОНЕЦ
+			gpio_set_pin_high(DO_END);		// Set up DO_END output
 			STATUS_FLAG = READY;
 			break;
 			
 			case STOP:
 			turn_controls_off();
-			gpio_set_pin_high(DO_END);		// Установка вывода КОНЕЦ
-			cpu_delay_ms(20, F_CPU);		// Ожидаем, пока команду STOP отработают все предыдущие таймеры
-			FLAG = 0;						// И сбрасываем флаг, который мог установиться выходом КОНЕЦ предыдущего таймера
+			gpio_set_pin_high(DO_END);		// Set up DO_END output
+			cpu_delay_ms(20, F_CPU);		// Wait till STOP command will be processed by all previous timers
+			FLAG = 0;						// And reset the flag, which could be set up by DO_END signal from previous timer
 			STATUS_FLAG = READY;
 			break;
 		}
@@ -545,7 +410,7 @@ int main(void){
 	while(1){
 		if(STATUS_FLAG == START){	// Waiting for START trigger
 			gpio_set_pin_low(DO_END);
-			cpu_delay_ms(10, F_CPU); // This delay is required to go pass LF-filter
+			cpu_delay_ms(10, F_CPU); // This delay is required to pass LF-filter
 			if(ioport_get_pin_level(DI_BYPASS)==1){		// If BYPASS input is inactive
 				start_timer();							// Start timers
 				end_timer();

@@ -47,9 +47,9 @@
 #define DI_TIMER_ENABLE_4		DI_TIMER_ENABLE_4_GPIO
 
 // Outputs discrete_______________________________________________________________
-// DO_RC_START	(PD4)
-#define DO_RC_START_GPIO	IOPORT_CREATE_PIN(PORTD, 4)
-#define DO_RC_START			DO_RC_START_GPIO
+// DO_EXT_START	(PD4)
+#define DO_EXT_START_GPIO	IOPORT_CREATE_PIN(PORTD, 4)
+#define DO_EXT_START			DO_EXT_START_GPIO
 
 // DO_END			(PD1)
 #define DO_END_GPIO				IOPORT_CREATE_PIN(PORTD, 1)

@@ -293,6 +293,9 @@
     <Compile Include="src\timer.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="src\uart.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="src\vars.h">
       <SubType>compile</SubType>
     </Compile>

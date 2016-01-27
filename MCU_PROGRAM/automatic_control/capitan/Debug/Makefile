@@ -59,14 +59,14 @@ SUBDIRS :=  \
 ../src/ASF/mega/utils/ \
 ../src/ASF/mega/utils/assembler/ \
 ../src/ASF/mega/utils/preprocessor/ \
-../src/config/ \
-../vsix/
+../src/config/
 
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
 ../src/ASF/common/services/clock/mega/sysclk.c \
 ../src/timer.c \
+../src/uart.c \
 ../src/ASF/common/boards/user_board/init.c \
 ../src/interrupt.c \
 ../src/main.c
@@ -81,6 +81,7 @@ ASM_SRCS +=
 OBJS +=  \
 src/ASF/common/services/clock/mega/sysclk.o \
 src/timer.o \
+src/uart.o \
 src/ASF/common/boards/user_board/init.o \
 src/interrupt.o \
 src/main.o
@@ -88,6 +89,7 @@ src/main.o
 OBJS_AS_ARGS +=  \
 src/ASF/common/services/clock/mega/sysclk.o \
 src/timer.o \
+src/uart.o \
 src/ASF/common/boards/user_board/init.o \
 src/interrupt.o \
 src/main.o
@@ -95,6 +97,7 @@ src/main.o
 C_DEPS +=  \
 src/ASF/common/services/clock/mega/sysclk.d \
 src/timer.d \
+src/uart.d \
 src/ASF/common/boards/user_board/init.d \
 src/interrupt.d \
 src/main.d
@@ -102,6 +105,7 @@ src/main.d
 C_DEPS_AS_ARGS +=  \
 src/ASF/common/services/clock/mega/sysclk.d \
 src/timer.d \
+src/uart.d \
 src/ASF/common/boards/user_board/init.d \
 src/interrupt.d \
 src/main.d
@@ -120,6 +124,8 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+
+
 
 
 

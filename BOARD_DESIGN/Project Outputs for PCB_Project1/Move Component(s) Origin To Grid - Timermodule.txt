@@ -1,0 +1,58 @@
+Move Component(s) Origin to Grid
+Filename     : D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc
+Date         : 24.10.2015
+Time         : 17:23:54
+Time Elapsed : 00:00:00
+
+
+    Small Component R8-100K (69.215mm,59.055mm) on Top Layer - Component pads are OFF grid. No action taken.
+    Small Component R7-100K (56.515mm,59.055mm) on Top Layer - Component pads are OFF grid. No action taken.
+    Small Component R6-100K (43.815mm,59.055mm) on Top Layer - Component pads are OFF grid. No action taken.
+    Small Component R5-100K (31.115mm,59.055mm) on Top Layer - Component pads are OFF grid. No action taken.
+    Small Component R14-100K (106.68mm,82.55mm) on Top Layer - Component origin is already ON grid.
+    Small Component R16-100K (110.49mm,82.55mm) on Top Layer - Component origin is already ON grid.
+    Small Component R18-100K (114.3mm,82.55mm) on Top Layer - Component origin is already ON grid.
+    Small Component R20-100K (118.11mm,82.55mm) on Top Layer - Component origin is already ON grid.
+    SMT Small Component TP7-Test Point (118.11mm,92.71mm) on Top Layer - Component origin is already ON grid.
+    SMT Small Component TP8-Test Point (118.11mm,90.17mm) on Top Layer - Component origin is already ON grid.
+    SMT Small Component TP3-Test Point (110.49mm,92.71mm) on Top Layer - Component origin is already ON grid.
+    SMT Small Component TP4-Test Point (110.49mm,90.17mm) on Top Layer - Component origin is already ON grid.
+    SMT Small Component TP5-Test Point (114.3mm,92.71mm) on Top Layer - Component origin is already ON grid.
+    SMT Small Component TP6-Test Point (114.3mm,90.17mm) on Top Layer - Component origin is already ON grid.
+    SMT Small Component TP2-Test Point (106.68mm,90.17mm) on Top Layer - Component origin is already ON grid.
+    SMT Small Component TP1-Test Point (106.68mm,92.71mm) on Top Layer - Component origin is already ON grid.
+    Small Component ST4-Plated Hole (90.17mm,75.565mm) on Top Layer - Component pads are OFF grid. No action taken.
+    Small Component ST3-Plated Hole (86.36mm,75.565mm) on Top Layer - Component pads are OFF grid. No action taken.
+    Small Component ST2-Plated Hole (82.55mm,75.565mm) on Top Layer - Component pads are OFF grid. No action taken.
+    Small Component B8-Plated Hole (90.17mm,73.025mm) on Top Layer - Component pads are OFF grid. No action taken.
+    Small Component B7-Plated Hole (90.17mm,78.105mm) on Top Layer - Component pads are OFF grid. No action taken.
+    Small Component B6-Plated Hole (86.36mm,73.025mm) on Top Layer - Component pads are OFF grid. No action taken.
+    Small Component B5-Plated Hole (86.36mm,78.105mm) on Top Layer - Component pads are OFF grid. No action taken.
+    Small Component B4-Plated Hole (82.55mm,73.025mm) on Top Layer - Component pads are OFF grid. No action taken.
+    Small Component B3-Plated Hole (82.55mm,78.105mm) on Top Layer - Component pads are OFF grid. No action taken.
+    Small Component T4-2N4403 (64.135mm,59.055mm) on Top Layer - Component pads are OFF grid. No action taken.
+    Small Component T3-2N4403 (51.435mm,59.055mm) on Top Layer - Component pads are OFF grid. No action taken.
+    Small Component T2-2N4403 (38.735mm,59.055mm) on Top Layer - Component pads are OFF grid. No action taken.
+    Small Component T1-2N4403 (26.035mm,59.055mm) on Top Layer - Component pads are OFF grid. No action taken.
+    Component S1-Iskra (76.2mm,114.3mm) on Multi-Layer - Component origin is already ON grid.
+    Small Component R19-100K (104.14mm,101.6mm) on Top Layer - Component origin is already ON grid.
+    Small Component R17-100K (107.95mm,101.6mm) on Top Layer - Component origin is already ON grid.
+    Small Component R15-100K (111.76mm,101.6mm) on Top Layer - Component origin is already ON grid.
+    Small Component R13-100K (115.57mm,101.6mm) on Top Layer - Component origin is already ON grid.
+    Small Component R12-1K (72.39mm,59.055mm) on Top Layer - Component pads are OFF grid. No action taken.
+    Small Component R11-1K (59.69mm,59.055mm) on Top Layer - Component pads are OFF grid. No action taken.
+    Small Component R10-1K (46.99mm,59.055mm) on Top Layer - Component pads are OFF grid. No action taken.
+    Small Component R9-1K (34.29mm,59.055mm) on Top Layer - Component pads are OFF grid. No action taken.
+    Small Component R4-100K (64.77mm,100.33mm) on Top Layer - Component origin is already ON grid.
+    Small Component R3-100K (64.77mm,104.14mm) on Top Layer - Component origin is already ON grid.
+    Small Component R2-100K (64.77mm,116.84mm) on Top Layer - Component origin is already ON grid.
+    Small Component R1-100K (64.77mm,120.65mm) on Top Layer - Component origin is already ON grid.
+    Component J1-D-Sub (23.495mm,134.62mm) on Top Layer - Component pads are OFF grid. No action taken.
+    Small Component C4-2.2uF (99.06mm,93.98mm) on Top Layer - Component origin is already ON grid.
+    Small Component C3-2.2uF (99.06mm,97.79mm) on Top Layer - Component origin is already ON grid.
+    Small Component C2-2.2uF (99.06mm,101.6mm) on Top Layer - Component origin is already ON grid.
+    Small Component C1-2.2uF (99.06mm,105.41mm) on Top Layer - Component origin is already ON grid.
+    Small Component B2-Plated Hole (78.74mm,73.025mm) on Top Layer - Component pads are OFF grid. No action taken.
+    Small Component ST1-Plated Hole (78.74mm,75.565mm) on Top Layer - Component pads are OFF grid. No action taken.
+    Small Component B1-Plated Hole (78.74mm,78.105mm) on Top Layer - Component pads are OFF grid. No action taken.
+count : 50

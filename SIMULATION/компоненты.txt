@@ -1,0 +1,23 @@
+DD1 http://www.chipdip.ru/product/ne555p/
+DD2 http://www.chipdip.ru/product/cd4010be/
+DD3 http://www.chipdip.ru/product/cd40106be/
+DD4 http://www.chipdip.ru/product/cd4030be/
+
+Диоды и транзисторы те, что вы рекомендовали: 
+VD1 http://www.chipdip.ru/product/1n5711/
+VD2 http://www.chipdip.ru/product/1n4001/
+VT http://www.chipdip.ru/product/2n2222a/
+
+Реле - http://www.chipdip.ru/product/5-1393239-4-rt214012/ 
+ Колодка - http://www.chipdip.ru/product/tyco-8-1393234-5/ 
+Резисторы и конденсаторы - на ваш выбор.
+
+Разъёмы такие http://www.chipdip.ru/product/dhs-26f/ 
+в таком  http://www.chipdip.ru/product/dn-25c/ корпусе на шлейф и, соответственно, встречные - на корпус блока.
+
+
+digital:
+4-AND - CD4082B
+4-NOR - CD4002BE Арт:181379  - купить
+Trigger - CD4013BE Арт:19744 - купить
+counter - 

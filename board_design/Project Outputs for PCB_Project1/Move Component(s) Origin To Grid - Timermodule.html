@@ -1,0 +1,332 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 { 
+			font-family : sans-serif;
+			color : white;
+			background-color : #21489e;
+			padding: 0.3em;
+		}
+		body { 
+			font-family : verdana;
+		}
+		td, th {  
+			padding: 0.5em;
+			text-align : center;
+			width : 18%;	
+		}
+		th { 
+			background-color : #A6CAF0;
+		
+		}
+		th.column1, td.column1 { 
+			text-align: left;
+			width : auto; 
+		}
+		table { 
+			width : 100%; 
+		}
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3 {
+			padding-top : 0.1em;
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width : auto;
+			vertical-align: top
+		}
+		.front_matter_column1 {
+			text-align : right;
+		}
+		.total_column1, .total_column {
+			font-weight : bold;	
+		}
+		.total_column1 {
+			text-align : right;
+		}
+		.front_matter_column2 {
+			text-align : center;
+		}
+		.front_matter_column3 {
+			text-align : left;
+		}
+		.warning, .error { 
+			color : red;
+			font-weight : bold;
+		}	
+		tr.onmouseout_odd { 
+			background-color : #EEEEE0 
+		}
+		tr.onmouseout_even { 
+			background-color : #F3F3E3   
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : lightYellow 
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #008000 
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+			
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);		
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {	
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}	
+	</script><title>Move Component(s) Origin to Grid</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD14\Templates\AD-rgb_logo_223x64.gif
+		"><a href="dxpprocess://Client:SetupPreferences?Server=PCB|PageName=Reports" class="customize"><acronym title="dxpprocess://Client:SetupPreferences?Server=PCB|PageName=Reports">customize</acronym></a><h1>Move Component(s) Origin to Grid</h1>
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3">24.10.2015</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3">17:23:54</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3">00:00:00</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3"><a href="file:///D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc" class="file"><acronym title="D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc">D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc</acronym></a></td>
+</tr>
+</table>
+<hr><a name="IDV24XHISQRUHXHPMBQZKW3OZ2WNKP1EDYJU2ZGUB1LUSCUZGQU31J"><h2>Components Origin</h2></a><a name="IDNI5AKWNYWAFBJ3DAWQNRR4K5JCXT1YQMZPTBY4E0CEQTFV2ZMXV"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="warning"></th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2671.5mil|Location2.X=2791.468mil|Location1.Y=2089.504mil|Location2.Y=2660.481mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2671.5mil|Location2.X=2791.468mil|Location1.Y=2089.504mil|Location2.Y=2660.481mil|Absolute=True">Small Component R8-100K (69.215mm,59.055mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2171.5mil|Location2.X=2291.468mil|Location1.Y=2089.504mil|Location2.Y=2660.481mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2171.5mil|Location2.X=2291.468mil|Location1.Y=2089.504mil|Location2.Y=2660.481mil|Absolute=True">Small Component R7-100K (56.515mm,59.055mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1671.5mil|Location2.X=1791.468mil|Location1.Y=2089.504mil|Location2.Y=2660.481mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1671.5mil|Location2.X=1791.468mil|Location1.Y=2089.504mil|Location2.Y=2660.481mil|Absolute=True">Small Component R6-100K (43.815mm,59.055mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1171.5mil|Location2.X=1291.468mil|Location1.Y=2089.504mil|Location2.Y=2660.481mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1171.5mil|Location2.X=1291.468mil|Location1.Y=2089.504mil|Location2.Y=2660.481mil|Absolute=True">Small Component R5-100K (31.115mm,59.055mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4146.85mil|Location2.X=4260mil|Location1.Y=2840mil|Location2.Y=3485.496mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4146.85mil|Location2.X=4260mil|Location1.Y=2840mil|Location2.Y=3485.496mil|Absolute=True">Small Component R14-100K (106.68mm,82.55mm) on Top Layer</acronym></a> - Component origin is already ON grid.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4296.85mil|Location2.X=4410mil|Location1.Y=2840mil|Location2.Y=3485.496mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4296.85mil|Location2.X=4410mil|Location1.Y=2840mil|Location2.Y=3485.496mil|Absolute=True">Small Component R16-100K (110.49mm,82.55mm) on Top Layer</acronym></a> - Component origin is already ON grid.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4446.85mil|Location2.X=4560mil|Location1.Y=2840mil|Location2.Y=3485.496mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4446.85mil|Location2.X=4560mil|Location1.Y=2840mil|Location2.Y=3485.496mil|Absolute=True">Small Component R18-100K (114.3mm,82.55mm) on Top Layer</acronym></a> - Component origin is already ON grid.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4596.85mil|Location2.X=4710mil|Location1.Y=2840mil|Location2.Y=3485.496mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4596.85mil|Location2.X=4710mil|Location1.Y=2840mil|Location2.Y=3485.496mil|Absolute=True">Small Component R20-100K (118.11mm,82.55mm) on Top Layer</acronym></a> - Component origin is already ON grid.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4609.252mil|Location2.X=4690.748mil|Location1.Y=3609.252mil|Location2.Y=3690.748mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4609.252mil|Location2.X=4690.748mil|Location1.Y=3609.252mil|Location2.Y=3690.748mil|Absolute=True">SMT Small Component TP7-Test Point (118.11mm,92.71mm) on Top Layer</acronym></a> - Component origin is already ON grid.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4609.252mil|Location2.X=4690.748mil|Location1.Y=3509.252mil|Location2.Y=3590.748mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4609.252mil|Location2.X=4690.748mil|Location1.Y=3509.252mil|Location2.Y=3590.748mil|Absolute=True">SMT Small Component TP8-Test Point (118.11mm,90.17mm) on Top Layer</acronym></a> - Component origin is already ON grid.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4309.252mil|Location2.X=4390.748mil|Location1.Y=3609.252mil|Location2.Y=3690.748mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4309.252mil|Location2.X=4390.748mil|Location1.Y=3609.252mil|Location2.Y=3690.748mil|Absolute=True">SMT Small Component TP3-Test Point (110.49mm,92.71mm) on Top Layer</acronym></a> - Component origin is already ON grid.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4309.252mil|Location2.X=4390.748mil|Location1.Y=3509.252mil|Location2.Y=3590.748mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4309.252mil|Location2.X=4390.748mil|Location1.Y=3509.252mil|Location2.Y=3590.748mil|Absolute=True">SMT Small Component TP4-Test Point (110.49mm,90.17mm) on Top Layer</acronym></a> - Component origin is already ON grid.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4459.252mil|Location2.X=4540.748mil|Location1.Y=3609.252mil|Location2.Y=3690.748mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4459.252mil|Location2.X=4540.748mil|Location1.Y=3609.252mil|Location2.Y=3690.748mil|Absolute=True">SMT Small Component TP5-Test Point (114.3mm,92.71mm) on Top Layer</acronym></a> - Component origin is already ON grid.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4459.252mil|Location2.X=4540.748mil|Location1.Y=3509.252mil|Location2.Y=3590.748mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4459.252mil|Location2.X=4540.748mil|Location1.Y=3509.252mil|Location2.Y=3590.748mil|Absolute=True">SMT Small Component TP6-Test Point (114.3mm,90.17mm) on Top Layer</acronym></a> - Component origin is already ON grid.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4159.252mil|Location2.X=4240.748mil|Location1.Y=3509.252mil|Location2.Y=3590.748mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4159.252mil|Location2.X=4240.748mil|Location1.Y=3509.252mil|Location2.Y=3590.748mil|Absolute=True">SMT Small Component TP2-Test Point (106.68mm,90.17mm) on Top Layer</acronym></a> - Component origin is already ON grid.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4159.252mil|Location2.X=4240.748mil|Location1.Y=3609.252mil|Location2.Y=3690.748mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4159.252mil|Location2.X=4240.748mil|Location1.Y=3609.252mil|Location2.Y=3690.748mil|Absolute=True">SMT Small Component TP1-Test Point (106.68mm,92.71mm) on Top Layer</acronym></a> - Component origin is already ON grid.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3480.019mil|Location2.X=3591.401mil|Location1.Y=2615mil|Location2.Y=3016.401mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3480.019mil|Location2.X=3591.401mil|Location1.Y=2615mil|Location2.Y=3016.401mil|Absolute=True">Small Component ST4-Plated Hole (90.17mm,75.565mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3330.019mil|Location2.X=3441.401mil|Location1.Y=2615mil|Location2.Y=3016.401mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3330.019mil|Location2.X=3441.401mil|Location1.Y=2615mil|Location2.Y=3016.401mil|Absolute=True">Small Component ST3-Plated Hole (86.36mm,75.565mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3180.019mil|Location2.X=3291.401mil|Location1.Y=2615mil|Location2.Y=3016.401mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3180.019mil|Location2.X=3291.401mil|Location1.Y=2615mil|Location2.Y=3016.401mil|Absolute=True">Small Component ST2-Plated Hole (82.55mm,75.565mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3508.599mil|Location2.X=3591.401mil|Location1.Y=2833.599mil|Location2.Y=2916.401mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3508.599mil|Location2.X=3591.401mil|Location1.Y=2833.599mil|Location2.Y=2916.401mil|Absolute=True">Small Component B8-Plated Hole (90.17mm,73.025mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3508.599mil|Location2.X=3591.401mil|Location1.Y=3033.599mil|Location2.Y=3116.401mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3508.599mil|Location2.X=3591.401mil|Location1.Y=3033.599mil|Location2.Y=3116.401mil|Absolute=True">Small Component B7-Plated Hole (90.17mm,78.105mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3358.599mil|Location2.X=3441.401mil|Location1.Y=2833.599mil|Location2.Y=2916.401mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3358.599mil|Location2.X=3441.401mil|Location1.Y=2833.599mil|Location2.Y=2916.401mil|Absolute=True">Small Component B6-Plated Hole (86.36mm,73.025mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3358.599mil|Location2.X=3441.401mil|Location1.Y=3033.599mil|Location2.Y=3116.401mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3358.599mil|Location2.X=3441.401mil|Location1.Y=3033.599mil|Location2.Y=3116.401mil|Absolute=True">Small Component B5-Plated Hole (86.36mm,78.105mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3208.599mil|Location2.X=3291.401mil|Location1.Y=2833.599mil|Location2.Y=2916.401mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3208.599mil|Location2.X=3291.401mil|Location1.Y=2833.599mil|Location2.Y=2916.401mil|Absolute=True">Small Component B4-Plated Hole (82.55mm,73.025mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3208.599mil|Location2.X=3291.401mil|Location1.Y=3033.599mil|Location2.Y=3116.401mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3208.599mil|Location2.X=3291.401mil|Location1.Y=3033.599mil|Location2.Y=3116.401mil|Absolute=True">Small Component B3-Plated Hole (82.55mm,78.105mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2460.827mil|Location2.X=2633.662mil|Location1.Y=2183.661mil|Location2.Y=2565.981mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2460.827mil|Location2.X=2633.662mil|Location1.Y=2183.661mil|Location2.Y=2565.981mil|Absolute=True">Small Component T4-2N4403 (64.135mm,59.055mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1960.827mil|Location2.X=2133.662mil|Location1.Y=2183.661mil|Location2.Y=2565.981mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1960.827mil|Location2.X=2133.662mil|Location1.Y=2183.661mil|Location2.Y=2565.981mil|Absolute=True">Small Component T3-2N4403 (51.435mm,59.055mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1460.827mil|Location2.X=1633.661mil|Location1.Y=2183.661mil|Location2.Y=2565.981mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1460.827mil|Location2.X=1633.661mil|Location1.Y=2183.661mil|Location2.Y=2565.981mil|Absolute=True">Small Component T2-2N4403 (38.735mm,59.055mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=960.827mil|Location2.X=1133.661mil|Location1.Y=2183.661mil|Location2.Y=2565.981mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=960.827mil|Location2.X=1133.661mil|Location1.Y=2183.661mil|Location2.Y=2565.981mil|Absolute=True">Small Component T1-2N4403 (26.035mm,59.055mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2895mil|Location2.X=3705mil|Location1.Y=3295mil|Location2.Y=4704.981mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2895mil|Location2.X=3705mil|Location1.Y=3295mil|Location2.Y=4704.981mil|Absolute=True">Component S1-Iskra (76.2mm,114.3mm) on Multi-Layer</acronym></a> - Component origin is already ON grid.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4046.85mil|Location2.X=4216.952mil|Location1.Y=3764.504mil|Location2.Y=4334.981mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4046.85mil|Location2.X=4216.952mil|Location1.Y=3764.504mil|Location2.Y=4334.981mil|Absolute=True">Small Component R19-100K (104.14mm,101.6mm) on Top Layer</acronym></a> - Component origin is already ON grid.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4196.85mil|Location2.X=4366.952mil|Location1.Y=3764.504mil|Location2.Y=4334.981mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4196.85mil|Location2.X=4366.952mil|Location1.Y=3764.504mil|Location2.Y=4334.981mil|Absolute=True">Small Component R17-100K (107.95mm,101.6mm) on Top Layer</acronym></a> - Component origin is already ON grid.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4346.85mil|Location2.X=4516.952mil|Location1.Y=3764.504mil|Location2.Y=4334.981mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4346.85mil|Location2.X=4516.952mil|Location1.Y=3764.504mil|Location2.Y=4334.981mil|Absolute=True">Small Component R15-100K (111.76mm,101.6mm) on Top Layer</acronym></a> - Component origin is already ON grid.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4496.85mil|Location2.X=4666.952mil|Location1.Y=3764.504mil|Location2.Y=4334.981mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4496.85mil|Location2.X=4666.952mil|Location1.Y=3764.504mil|Location2.Y=4334.981mil|Absolute=True">Small Component R13-100K (115.57mm,101.6mm) on Top Layer</acronym></a> - Component origin is already ON grid.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2796.85mil|Location2.X=2966.952mil|Location1.Y=2089.504mil|Location2.Y=2659.981mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2796.85mil|Location2.X=2966.952mil|Location1.Y=2089.504mil|Location2.Y=2659.981mil|Absolute=True">Small Component R12-1K (72.39mm,59.055mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2296.85mil|Location2.X=2446.958mil|Location1.Y=2089.504mil|Location2.Y=2659.981mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2296.85mil|Location2.X=2446.958mil|Location1.Y=2089.504mil|Location2.Y=2659.981mil|Absolute=True">Small Component R11-1K (59.69mm,59.055mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1796.85mil|Location2.X=1966.951mil|Location1.Y=2089.504mil|Location2.Y=2659.981mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1796.85mil|Location2.X=1966.951mil|Location1.Y=2089.504mil|Location2.Y=2659.981mil|Absolute=True">Small Component R10-1K (46.99mm,59.055mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1296.85mil|Location2.X=1416.968mil|Location1.Y=2089.504mil|Location2.Y=2659.981mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1296.85mil|Location2.X=1416.968mil|Location1.Y=2089.504mil|Location2.Y=2659.981mil|Absolute=True">Small Component R9-1K (34.29mm,59.055mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2314.504mil|Location2.X=2785.496mil|Location1.Y=3896.85mil|Location2.Y=4102.981mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2314.504mil|Location2.X=2785.496mil|Location1.Y=3896.85mil|Location2.Y=4102.981mil|Absolute=True">Small Component R4-100K (64.77mm,100.33mm) on Top Layer</acronym></a> - Component origin is already ON grid.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2314.504mil|Location2.X=2785.496mil|Location1.Y=4046.85mil|Location2.Y=4252.981mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2314.504mil|Location2.X=2785.496mil|Location1.Y=4046.85mil|Location2.Y=4252.981mil|Absolute=True">Small Component R3-100K (64.77mm,104.14mm) on Top Layer</acronym></a> - Component origin is already ON grid.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2314.504mil|Location2.X=2785.496mil|Location1.Y=4546.85mil|Location2.Y=4752.981mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2314.504mil|Location2.X=2785.496mil|Location1.Y=4546.85mil|Location2.Y=4752.981mil|Absolute=True">Small Component R2-100K (64.77mm,116.84mm) on Top Layer</acronym></a> - Component origin is already ON grid.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2314.504mil|Location2.X=2785.496mil|Location1.Y=4696.85mil|Location2.Y=4902.981mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2314.504mil|Location2.X=2785.496mil|Location1.Y=4696.85mil|Location2.Y=4902.981mil|Absolute=True">Small Component R1-100K (64.77mm,120.65mm) on Top Layer</acronym></a> - Component origin is already ON grid.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=233mil|Location2.X=1044.291mil|Location1.Y=4248.818mil|Location2.Y=6450.981mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=233mil|Location2.X=1044.291mil|Location1.Y=4248.818mil|Location2.Y=6450.981mil|Absolute=True">Component J1-D-Sub (23.495mm,134.62mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3816mil|Location2.X=3983.528mil|Location1.Y=3646.063mil|Location2.Y=3853.981mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3816mil|Location2.X=3983.528mil|Location1.Y=3646.063mil|Location2.Y=3853.981mil|Absolute=True">Small Component C4-2.2uF (99.06mm,93.98mm) on Top Layer</acronym></a> - Component origin is already ON grid.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3816mil|Location2.X=3983.528mil|Location1.Y=3796.063mil|Location2.Y=4003.981mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3816mil|Location2.X=3983.528mil|Location1.Y=3796.063mil|Location2.Y=4003.981mil|Absolute=True">Small Component C3-2.2uF (99.06mm,97.79mm) on Top Layer</acronym></a> - Component origin is already ON grid.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3816mil|Location2.X=3983.528mil|Location1.Y=3946.063mil|Location2.Y=4153.981mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3816mil|Location2.X=3983.528mil|Location1.Y=3946.063mil|Location2.Y=4153.981mil|Absolute=True">Small Component C2-2.2uF (99.06mm,101.6mm) on Top Layer</acronym></a> - Component origin is already ON grid.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3816mil|Location2.X=3983.528mil|Location1.Y=4096.063mil|Location2.Y=4303.981mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3816mil|Location2.X=3983.528mil|Location1.Y=4096.063mil|Location2.Y=4303.981mil|Absolute=True">Small Component C1-2.2uF (99.06mm,105.41mm) on Top Layer</acronym></a> - Component origin is already ON grid.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3058.599mil|Location2.X=3141.401mil|Location1.Y=2833.599mil|Location2.Y=2916.401mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3058.599mil|Location2.X=3141.401mil|Location1.Y=2833.599mil|Location2.Y=2916.401mil|Absolute=True">Small Component B2-Plated Hole (78.74mm,73.025mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3030.019mil|Location2.X=3141.401mil|Location1.Y=2615mil|Location2.Y=3016.401mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3030.019mil|Location2.X=3141.401mil|Location1.Y=2615mil|Location2.Y=3016.401mil|Absolute=True">Small Component ST1-Plated Hole (78.74mm,75.565mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3058.599mil|Location2.X=3141.401mil|Location1.Y=3033.599mil|Location2.Y=3116.401mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\FreeTime\Biz\Soft\Timer_electronix_555\BOARD_DESIGN\Timermodule.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3058.599mil|Location2.X=3141.401mil|Location1.Y=3033.599mil|Location2.Y=3116.401mil|Absolute=True">Small Component B1-Plated Hole (78.74mm,78.105mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+</table></a><a href="#top">Back to top</a><br><br><hr>
+</body>
+</html>
